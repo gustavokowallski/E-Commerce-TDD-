@@ -12,9 +12,9 @@ spring:
           on-profile: test
 
       datasource:
-        url:
-        username:
-        password:
+        url: jdbc:postgresql://localhost:5433/eCommerce
+        username: postgres
+        password: 1234567
 
       jpa:
         hibernate:
