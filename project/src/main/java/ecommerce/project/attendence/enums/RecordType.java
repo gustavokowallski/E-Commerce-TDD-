@@ -1,4 +1,4 @@
-package ecommerce.project.attendencerecord.enums;
+package ecommerce.project.attendence.enums;
 
 public enum RecordType {
     CLOCK_IN,

@@ -1,6 +1,6 @@
-package ecommerce.project.attendencerecord.domain;
+package ecommerce.project.attendence.domain;
 
-import ecommerce.project.attendencerecord.enums.RecordType;
+import ecommerce.project.attendence.enums.RecordType;
 import ecommerce.project.employee.domain.Employee;
 import jakarta.persistence.*;
 
