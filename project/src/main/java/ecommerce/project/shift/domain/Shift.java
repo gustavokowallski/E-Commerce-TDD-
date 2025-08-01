@@ -1,5 +1,6 @@
 package ecommerce.project.shift.domain;
 
+import ecommerce.project.employee.domain.Employee;
 import jakarta.persistence.*;
 
 import java.time.LocalTime;
@@ -29,6 +30,10 @@ public class Shift {
 
     @Column(nullable = false)
     private Integer dailyWorkload;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
 
     public Shift(){
     }
@@ -97,6 +102,14 @@ public class Shift {
 
     public void setDailyWorkload(Integer dailyWorkload) {
         this.dailyWorkload = dailyWorkload;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     @Override

@@ -4,6 +4,7 @@ import ecommerce.project.attendence.domain.AttendenceRecord;
 import ecommerce.project.shift.domain.Shift;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,10 +21,10 @@ public class Employee {
     private String position;
     private Boolean active;
 
-    @OneToMany(mappedBy = "employees")
-    private List<AttendenceRecord> records;
+    @OneToMany(mappedBy = "employee")
+    private List<AttendenceRecord> records = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(mappedBy = "employee")
     private Shift shifts;
 
     public Employee(){
@@ -84,6 +85,19 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<AttendenceRecord> getRecords() {
+        return records;
+    }
+
+
+    public Shift getShifts() {
+        return shifts;
+    }
+
+    public void setShifts(Shift shifts) {
+        this.shifts = shifts;
     }
 
     @Override
