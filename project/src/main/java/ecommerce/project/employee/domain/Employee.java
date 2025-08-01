@@ -1,11 +1,15 @@
 package ecommerce.project.employee.domain;
 
+import ecommerce.project.attendence.domain.AttendanceRecord;
+import ecommerce.project.shift.domain.Shift;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tb_employee")
+@Table(name = "tb_employees")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +20,13 @@ public class Employee {
     private String password;
     private String position;
     private Boolean active;
+
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<AttendanceRecord> attendanceRecords = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "shift_id", nullable = false)
+    private Shift shift;
 
     public Employee(){
     }
@@ -75,6 +86,18 @@ public class Employee {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<AttendanceRecord> getAttendanceRecords() {
+        return attendanceRecords;
+    }
+
+    public Shift getShift() {
+        return shift;
+    }
+
+    public void setShift(Shift shift) {
+        this.shift = shift;
     }
 
     @Override

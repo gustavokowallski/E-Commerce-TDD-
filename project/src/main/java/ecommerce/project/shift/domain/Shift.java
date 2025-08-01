@@ -1,12 +1,15 @@
 package ecommerce.project.shift.domain;
 
+import ecommerce.project.employee.domain.Employee;
 import jakarta.persistence.*;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tb_shift")
+@Table(name = "tb_shifts")
 public class Shift {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +32,9 @@ public class Shift {
 
     @Column(nullable = false)
     private Integer dailyWorkload;
+
+    @OneToMany(mappedBy = "shift", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Employee> employees = new ArrayList<>();
 
     public Shift(){
     }
@@ -97,6 +103,10 @@ public class Shift {
 
     public void setDailyWorkload(Integer dailyWorkload) {
         this.dailyWorkload = dailyWorkload;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
     }
 
     @Override
