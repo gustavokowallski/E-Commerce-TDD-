@@ -12,7 +12,7 @@ spring:
           on-profile: test
 
       datasource:
-        url: jdbc:postgresql://localhost:5433/eCommerce
+        url: jdbc:postgresql://localhost:5433/myapplication
         username: postgres
         password: 1234567
 

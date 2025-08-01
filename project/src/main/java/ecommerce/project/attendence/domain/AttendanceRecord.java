@@ -9,23 +9,27 @@ import java.time.LocalTime;
 import java.util.Objects;
 
 @Entity
-@Table(name = "tb_attendence_record")
-public class AttendenceRecord {
+@Table(name = "tb_attendance_records")
+public class AttendanceRecord {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
 
         private LocalDate date;
         private LocalTime time;
+
+        @Enumerated(EnumType.STRING)
+        @Column(nullable = false)
         private RecordType type;
 
-        @OneToMany(mappedBy = "records")
+        @ManyToOne
+        @JoinColumn(name = "employee_id")
         private Employee employee;
 
-    public  AttendenceRecord() {
+    public  AttendanceRecord() {
     }
 
-    public AttendenceRecord(Long id, RecordType type, LocalTime time, LocalDate date, Employee employee) {
+    public AttendanceRecord(Long id, RecordType type, LocalTime time, LocalDate date, Employee employee) {
         this.id = id;
         this.type = type;
         this.time = time;
@@ -76,7 +80,7 @@ public class AttendenceRecord {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        AttendenceRecord that = (AttendenceRecord) o;
+        AttendanceRecord that = (AttendanceRecord) o;
         return Objects.equals(id, that.id);
     }
 
