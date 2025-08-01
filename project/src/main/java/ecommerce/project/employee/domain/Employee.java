@@ -1,7 +1,10 @@
 package ecommerce.project.employee.domain;
 
+import ecommerce.project.attendence.domain.AttendenceRecord;
+import ecommerce.project.shift.domain.Shift;
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -16,6 +19,12 @@ public class Employee {
     private String password;
     private String position;
     private Boolean active;
+
+    @OneToMany(mappedBy = "employees")
+    private List<AttendenceRecord> records;
+
+    @OneToOne
+    private Shift shifts;
 
     public Employee(){
     }

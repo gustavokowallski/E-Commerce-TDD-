@@ -14,10 +14,13 @@ public class AttendenceRecord {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;
-        private Employee employee;
+
         private LocalDate date;
         private LocalTime time;
         private RecordType type;
+
+        @OneToMany(mappedBy = "records")
+        private Employee employee;
 
     public  AttendenceRecord() {
     }
