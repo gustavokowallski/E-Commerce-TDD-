@@ -1,6 +1,8 @@
 package ecommerce.project.services;
 
+import ecommerce.project.attendence.dto.AttendanceRecordDTO;
 import ecommerce.project.attendence.service.AttendanceRecordService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -18,10 +20,13 @@ public class AttendanceRecordTest {
     @BeforeEach
     void setUp(){
         existingId = 1L;
+
     }
 
     @Test
     void AttendanceRecordClockInShouldReturnEmployeeClockedInWhenSucess(){
-        attendanceRecordService.attendanceRecordClockIn(existingId);
+        AttendanceRecordDTO result = attendanceRecordService.attendanceRecordClockIn(existingId);
+
+        Assertions.assertNotNull(result);
     }
 }
