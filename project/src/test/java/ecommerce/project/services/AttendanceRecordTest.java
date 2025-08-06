@@ -1,6 +1,7 @@
 package ecommerce.project.services;
 
 import ecommerce.project.attendence.service.AttendanceRecordService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -12,8 +13,15 @@ public class AttendanceRecordTest {
     @InjectMocks
     private AttendanceRecordService attendanceRecordService;
 
+    private Long existingId;
+
+    @BeforeEach
+    void setUp(){
+        existingId = 1L;
+    }
+
     @Test
     void AttendanceRecordClockInShouldReturnEmployeeClockedInWhenSucess(){
-        attendanceRecordService.attendanceRecordClockIn();
+        attendanceRecordService.attendanceRecordClockIn(existingId);
     }
 }

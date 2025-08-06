@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AttendanceRecordService {
     @Transactional
-    public void attendanceRecordClockIn(){
+    public void attendanceRecordClockIn(Long employeeId){
 
     }
 }
