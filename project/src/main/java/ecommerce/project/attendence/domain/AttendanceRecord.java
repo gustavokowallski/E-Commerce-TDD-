@@ -1,6 +1,7 @@
 package ecommerce.project.attendence.domain;
 
 import ecommerce.project.attendence.enums.RecordType;
+import ecommerce.project.attendence.util.AttendanceState;
 import ecommerce.project.employee.domain.Employee;
 import jakarta.persistence.*;
 
@@ -18,9 +19,8 @@ public class AttendanceRecord {
         private LocalDate date;
         private LocalTime time;
 
-        @Enumerated(EnumType.STRING)
         @Column(nullable = false)
-        private RecordType type;
+        private AttendanceState attendanceState;
 
         @ManyToOne
         @JoinColumn(name = "employee_id")
@@ -29,9 +29,8 @@ public class AttendanceRecord {
     public  AttendanceRecord() {
     }
 
-    public AttendanceRecord(Long id, RecordType type, LocalTime time, LocalDate date, Employee employee) {
+    public AttendanceRecord(Long id,LocalTime time, LocalDate date, Employee employee) {
         this.id = id;
-        this.type = type;
         this.time = time;
         this.date = date;
         this.employee = employee;
@@ -45,12 +44,12 @@ public class AttendanceRecord {
         this.id = id;
     }
 
-    public RecordType getType() {
-        return type;
+    public AttendanceState getAttendanceState() {
+        return attendanceState;
     }
 
-    public void setType(RecordType type) {
-        this.type = type;
+    public void setAttendanceState(AttendanceState attendanceState) {
+        this.attendanceState = attendanceState;
     }
 
     public LocalTime getTime() {
